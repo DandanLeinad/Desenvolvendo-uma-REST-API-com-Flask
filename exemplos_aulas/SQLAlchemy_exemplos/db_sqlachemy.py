@@ -1,8 +1,8 @@
-from classes_tabelas import Pessoas, Usuarios
+from classes_tabelas import Pessoas
 
 # Insere dados na tabela pessoa
 def insere_pessoas():
-    pessoa = Pessoas(nome='Galleani',idade=25)
+    pessoa = Pessoas(nome='Daniel',idade=20)
     print(pessoa)
     pessoa.save()
 
@@ -10,8 +10,15 @@ def insere_pessoas():
 def consulta_pessoas():
     pessoas = Pessoas.query.all()
     print(pessoas)
+
+    # Verifica se a pessoa 'Rafael' existe
     pessoa = Pessoas.query.filter_by(nome='Rafael').first()
-    print(pessoa.idade)
+
+    if pessoa:
+        print(pessoa.idade)
+    else:
+        print("Pessoa  não encontrada.")
+
 
 # Altera dados na tabela pessoa
 def altera_pessoa():
@@ -24,19 +31,19 @@ def exclui_pessoa():
     pessoa = Pessoas.query.filter_by(nome='Felipe').first()
     pessoa.delete()
 
-def insere_usuario(login, senha):
-    usuario = Usuarios(login=login, senha=senha)
-    usuario.save()
+# def insere_usuario(login, senha):
+#     usuario = Usuarios(login=login, senha=senha)
+#     usuario.save()
 
-def consulta_todos_usuarios():
-    usuarios = Usuarios.query.all()
-    print(usuarios)
+# def consulta_todos_usuarios():
+#     usuarios = Usuarios.query.all()
+#     print(usuarios)
 
 if __name__ == '__main__':
-    insere_usuario('rafael', '1234')
-    insere_usuario('galleani', '4321')
-    consulta_todos_usuarios()
-    #insere_pessoas()
+    #insere_usuario('rafael', '1234')
+    #insere_usuario('galleani', '4321')
+    #consulta_todos_usuarios()
+    insere_pessoas()
     #altera_pessoa()
     #exclui_pessoa()
-    #consulta_pessoas()
+    consulta_pessoas()
